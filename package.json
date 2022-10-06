@@ -15,8 +15,10 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@vueuse/components": "^9.3.0",
     "@vueuse/core": "^9.1.0",
     "@vueuse/head": "^0.7.9",
+    "ethers": "^5.7.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.17",
     "vue": "^3.2.37",
@@ -27,9 +29,11 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.2",
     "@iconify-json/carbon": "^1.1.7",
+    "@iconify-json/simple-icons": "^1.1.29",
     "@intlify/vite-plugin-vue-i18n": "^6.0.0",
     "@types/markdown-it-link-attributes": "^3.0.1",
     "@types/nprogress": "^0.2.0",
+    "@unocss/preset-icons": "^0.45.26",
     "@vitejs/plugin-vue": "^3.0.1",
     "@vue/test-utils": "^2.0.2",
     "critters": "^0.0.16",
