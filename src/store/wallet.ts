@@ -24,7 +24,7 @@ export const useWalletStore = defineStore('wallet', () => {
     isMetaMaskInstalled.value = Boolean(window && window.ethereum && window.ethereum.isMetaMask)
   }
 
-  const changeNetworkNFT = async () => {
+  const changeNetwork = async () => {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
@@ -40,34 +40,7 @@ export const useWalletStore = defineStore('wallet', () => {
       })
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
-      })
-    }
-  }
-
-  const changeNetworkProtocol = async () => {
-    try {
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0xA869' }],
-      })
-    }
-    catch (e: any) {
-      if (e.code === 4001)
-        return // User rejected the request
-      await window.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-          chainId: '0xA869', // 43113
-          chainName: 'AVAX Testnet',
-          nativeCurrency: { name: 'AVAX', symbol: 'AVAX', decimals: 18 },
-          rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
-          blockExplorerUrls: ['https://testnet.explorer.avax.network/'],
-        }],
-      })
-      await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0xA869' }],
+        params: [{ chainId: chainParams.chainId }],
       })
     }
   }
@@ -141,8 +114,7 @@ export const useWalletStore = defineStore('wallet', () => {
     signer,
     account,
     accountName,
-    changeNetworkNFT,
-    changeNetworkProtocol,
+    changeNetwork,
     requestConnection,
     initWallet,
     getSigner,
